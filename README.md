@@ -169,3 +169,32 @@ MIT — 详见 [LICENSE](LICENSE)
 - [PortSwigger Montoya API](https://github.com/PortSwigger/burp-extender-montoya-api) — Burp 扩展开发框架
 - [Anthropic MCP](https://modelcontextprotocol.io/) — Model Context Protocol
 - [ZCode](https://zcode.z.ai) — AI 编程 IDE
+
+## 🚀 Agent 一键部署（5 个 Phase 3 重点 agent）
+
+仓库 `agents/` 目录提供 5 个精心策划的 ZCode agent 文件。运行 setup 脚本自动复制到 ZCode 加载路径：
+
+### Windows (PowerShell / CMD)
+```cmd
+scripts\setup-agents.bat
+```
+
+### Linux / macOS / Git Bash
+```bash
+./scripts/setup-agents.sh
+```
+
+### 5 个 agent 角色
+
+| Agent | 装备工具数 | 角色定位 |
+|-------|------------|----------|
+| 🛡️ **anci** | 33（全量） | 端到端红队攻击链编排 |
+| 🗡️ **burp-suite-arsenal** | 33（全量） | 渗透突击手 |
+| 🔭 **recon-scout** | 19（精简） | 侦察与中间件识别 |
+| 🛡️ **code-auditor** | 12（精简） | 动态验证漏洞 |
+| 🚨 **incident-responder** | 15（精简） | IOC 主动验证 |
+
+**注意**：ZCode agent 文件实际位于 `~/.zcode/agents/`（ZCode 加载路径），setup 脚本负责把仓库的 5 个 agent 同步到该路径。ZCode 重启后生效。
+
+---
+
