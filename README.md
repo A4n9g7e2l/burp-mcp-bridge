@@ -61,7 +61,25 @@
 > Python 路径按本机实际调整；脚本会监听 stdin 的 JSON-RPC，转发到 Burp 端口 9877。
 
 ### 步骤 3：重启 ZCode
-完全关闭后重开，@burp-suite-arsenal 即可调用 26 个 `mcp__mcpBridge__*` 工具。
+完全关闭后重开，@burp-suite-arsenal 即可调用 **33 个** `mcp__mcpBridge__*` 工具（26 基础 + 7 Phase 3 高级）。
+
+### Phase 3 工具外部依赖（可选）
+
+Phase 3 的 4 个工具需要外部二进制。**这些依赖是可选的** —— 如果没装，对应工具返回明确错误信息，其他 29 个工具仍正常工作。
+
+| 工具 | 外部依赖 | 默认路径（可通过 JVM `-D...` 覆盖） |
+|------|----------|--------------------------------|
+| `sqlmap_run` | sqlmap.py | `-Dmcpbridge.sqlmap.path=C:/path/sqlmap.py` |
+| `poc_verify_xpoc` | xpoc.exe | `-Dmcpbridge.xpoc.path=C:/path/xpoc.exe` |
+| `captcha_solve` | Python + ddddocr | `-Dmcpbridge.sqlmap.python=C:/path/python.exe` |
+| `js_encrypt` | GraalVM JS（已在 jar 内） | 无 |
+
+**完整启动命令示例**（含 Phase 3 路径）：
+```powershell
+java "-Dmcpbridge.sqlmap.path=C:/Users/Zhouxin/AppData/Local/sqlmap/sqlmapproject-sqlmap-bb54601/sqlmap.py" `
+     "-Dmcpbridge.xpoc.path=D:/桌面/安全/xpoc_windows_amd64.exe" `
+     -jar "D:\BurpSuite_Pro_V2026.6\burpsuite_pro.jar"
+```
 
 ## 🚀 30 秒上手
 
@@ -72,7 +90,9 @@
 
 Agent 会自动调用 `mcp__mcpBridge__jwt_decode` 返回 3 段解码。
 
-## 🛠️ 26 工具完整清单
+## 🛠️ 33 工具完整清单
+
+### Phase 1+2 基础工具（26 个）
 
 | 类别 | 工具 | 说明 |
 |------|------|------|
@@ -93,6 +113,18 @@ Agent 会自动调用 `mcp__mcpBridge__jwt_decode` 返回 3 段解码。
 | 请求走私 | `smuggler_detect` | CL.TE / TE.CL |
 | JWT | `jwt_decode` / `jwt_forge` / `jwt_bruteforce` | JWT 工具集 |
 | 被动标注 | `hae_get_highlights` / `domain_hunter_get_results` / `xkeys_get_findings` | 读插件输出 |
+
+### Phase 3 高级工具（7 个，100% 实际可用）
+
+| 类别 | 工具 | 说明 | 外部依赖 |
+|------|------|------|----------|
+| 高速攻击 | `turbo_intruder_run` | Turbo Intruder 脚本调度 | - |
+| SQL 注入 | `sqlmap_run` | 100% 调 sqlmap.py，全 technique/level/risk | sqlmap.py |
+| 验证码 | `captcha_solve` | 100% 调 ddddocr（图片 base64 → 文字） | ddddocr |
+| 前端加密 | `js_encrypt` | GraalVM JS 引擎执行 JS 函数 | GraalVM JS |
+| 文件上传 | `upload_test` | multipart/form-data 发 4 种扩展名变体 | - |
+| 越权 | `authorizer_run` | 双 cookie 切换 + 响应对比 | - |
+| POC 验证 | `poc_verify_xpoc` | 100% 跑 xpoc.exe，云端 POC 库 | xpoc.exe |
 
 ## 🏗️ 架构
 
