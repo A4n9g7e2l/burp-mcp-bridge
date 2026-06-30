@@ -31,15 +31,6 @@
 | **🔓 Phase 3 越权** | `authorizer_run` | 双 cookie IDOR 自动检测 |
 | **✅ Phase 3 POC 验证** | `poc_verify_xpoc` | 100% 跑 xpoc.exe 云端 POC 库 |
 
-### 🤖 与 5 个 ZCode Agent 集成
-| Agent | 装备工具数 | 用途 |
-|-------|------------|------|
-| 🛡️ anci | 33（全量） | 端到端红队攻击链编排 |
-| 🗡️ burp-suite-arsenal | 33（全量） | 渗透突击手 |
-| 🔭 recon-scout | 19 | 中间件识别 + 被动信息收集 |
-| 🛡️ code-auditor | 12 | 动态验证 JWT/Shiro 漏洞 |
-| 🚨 incident-responder | 15 | IOC 主动验证 |
-
 ## 📦 安装
 
 ### 前置条件
