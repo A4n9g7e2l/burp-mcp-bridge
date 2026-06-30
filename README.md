@@ -1,6 +1,6 @@
 # Burp MCP Bridge
 
-> 把 Burp Suite 的 26 个能力（核心 + 插件桥接）通过 MCP 协议桥接到 AI 客户端，让 `@burp-suite-arsenal` 等 agent 真正"看到" Burp 的全部武器。
+> 把 Burp Suite 的 **33 个能力**（26 核心 + 7 Phase 3 高级工具）通过 MCP 协议桥接到 AI 客户端，让 `@burp-suite-arsenal` 等 agent 真正"看到" Burp 的全部武器。
 
 ![Demo](docs/demo.png)
 *（待实测后填：Burp 加载 jar + ZCode @burp-suite-arsenal 调 jwt_decode 截图）*
@@ -10,7 +10,7 @@
 ### 🔌 桥接官方 burpsuite MCP 27 工具的空白
 官方 `burp-mcp-all.jar`（PortSwigger 官方）只能暴露 Burp 核心（Proxy/Repeater/Intruder/Scanner/Collaborator），**不暴露 29 个 BApp 插件**。本项目通过 Montoya API 主动读取插件的标注/日志/发现，弥补这个空白。
 
-### 🎯 26 个差异化工具
+### 🎯 33 个差异化工具（26 核心 + 7 Phase 3 高级）
 | 类别 | 工具 | 桥接的 Burp 插件 / 能力 |
 |------|------|--------------------------|
 | **Shiro** | `shiro_detect` / `shiro_exploit` | 读 BurpShiroPassiveScan 标注 + gadget chain payload 生成 |
@@ -23,15 +23,22 @@
 | **Intruder** | `intruder_start` / `intruder_get_results` | 攻击编排 + 结果 |
 | **目标管理** | `get_target_sitemap` / `get_scope` / `add_to_scope` / `get_target_issues` | 站点地图 + 范围 + 漏洞 |
 | **流量** | `get_all_proxy_history` / `get_annotated_items` | 代理历史 + 染色标注 |
+| **💥 Phase 3 高速攻击** | `turbo_intruder_run` | TI 脚本调度（attack_id） |
+| **🗄️ Phase 3 SQL 注入** | `sqlmap_run` | 100% 调 sqlmap.py 全参数 |
+| **🖼️ Phase 3 验证码** | `captcha_solve` | 100% 调 ddddocr（图片 → 文字） |
+| **🧮 Phase 3 前端加密** | `js_encrypt` | GraalVM JS 引擎执行 JS 函数 |
+| **📤 Phase 3 文件上传** | `upload_test` | multipart 4 变体（.php/.php.jpg/.phtml/%00.jpg） |
+| **🔓 Phase 3 越权** | `authorizer_run` | 双 cookie IDOR 自动检测 |
+| **✅ Phase 3 POC 验证** | `poc_verify_xpoc` | 100% 跑 xpoc.exe 云端 POC 库 |
 
 ### 🤖 与 5 个 ZCode Agent 集成
 | Agent | 装备工具数 | 用途 |
 |-------|------------|------|
-| 🛡️ anci | 26（全量） | 端到端红队攻击链编排 |
-| 🗡️ burp-suite-arsenal | 26（全量） | 渗透突击手 |
-| 🔭 recon-scout | 12 | 中间件识别 + 被动信息收集 |
-| 🛡️ code-auditor | 5 | 动态验证 JWT/Shiro 漏洞 |
-| 🚨 incident-responder | 8 | IOC 主动验证 |
+| 🛡️ anci | 33（全量） | 端到端红队攻击链编排 |
+| 🗡️ burp-suite-arsenal | 33（全量） | 渗透突击手 |
+| 🔭 recon-scout | 19 | 中间件识别 + 被动信息收集 |
+| 🛡️ code-auditor | 12 | 动态验证 JWT/Shiro 漏洞 |
+| 🚨 incident-responder | 15 | IOC 主动验证 |
 
 ## 📦 安装
 
