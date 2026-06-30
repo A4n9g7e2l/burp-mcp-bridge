@@ -8,6 +8,7 @@ import com.burpmcpbridge.mcp.ToolRegistry;
 import com.burpmcpbridge.tools.ExtensionTools;
 import com.burpmcpbridge.tools.IntruderTools;
 import com.burpmcpbridge.tools.JwtTools;
+import com.burpmcpbridge.tools.Phase3Tools;
 import com.burpmcpbridge.tools.PluginAnnotationTools;
 import com.burpmcpbridge.tools.PluginBridgeTools;
 import com.burpmcpbridge.tools.ScannerTools;
@@ -43,6 +44,7 @@ public class BurpMcpBridgeExtension implements BurpExtension {
         new PluginBridgeTools(api, toolRegistry).register();
         new JwtTools(api, toolRegistry).register();
         new PluginAnnotationTools(api, toolRegistry).register();
+        new Phase3Tools(api, toolRegistry).register();
 
         McpBridgeTab tab = new McpBridgeTab(api, toolRegistry, this);
         api.userInterface().registerSuiteTab("MCP Bridge", tab);
