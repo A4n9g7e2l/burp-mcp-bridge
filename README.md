@@ -3,12 +3,12 @@
 > 把 Burp Suite 的 **33 个能力**（26 核心 + 7 Phase 3 高级工具）通过 MCP 协议桥接到 AI 客户端，让 `@burp-suite-arsenal` 等 agent 真正"看到" Burp 的全部武器。
 
 ![Demo](docs/demo.png)
-*（待实测后填：Burp 加载 jar + ZCode @burp-suite-arsenal 调 jwt_decode 截图）*
+*完整端到端实测见 [docs/demo-phase3.md](docs/demo-phase3.md) — 32/33 工具真实调用 PASS。ZCode 是命令行 IDE 无法直接截图，文档含 Mermaid 架构图 + 真实 JSON 输出。*
 
 ## ✨ 核心特性
 
 ### 🔌 桥接官方 burpsuite MCP 27 工具的空白
-官方 `burp-mcp-all.jar`（PortSwigger 官方）只能暴露 Burp 核心（Proxy/Repeater/Intruder/Scanner/Collaborator），**不暴露 29 个 BApp 插件**。本项目通过 Montoya API 主动读取插件的标注/日志/发现，弥补这个空白。
+官方 `burp-mcp-all.jar`（PortSwigger 官方）只能暴露 Burp 核心（Proxy/Repeater/Intruder/Scanner/Collaborator），**不暴露 BApp 商店的第三方插件**。本项目通过 Montoya API 主动读取插件的标注/日志/发现，弥补这个空白。
 
 ### 🎯 33 个差异化工具（26 核心 + 7 Phase 3 高级）
 | 类别 | 工具 | 桥接的 Burp 插件 / 能力 |
@@ -133,7 +133,7 @@ Agent 会自动调用 `mcp__mcpBridge__jwt_decode` 返回 3 段解码。
        ↓ HTTP POST + SSE 流
 [Burp Suite :9877] ← mcp-bridge Extension
        ↓ Montoya API
-[Burp Suite 核心 + 29 个 BApp 插件]
+[Burp Suite 核心 + 全部已加载的 BApp 插件]
 ```
 
 **4 个组件**：
