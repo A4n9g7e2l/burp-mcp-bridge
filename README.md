@@ -164,8 +164,6 @@ MIT — 详见 [LICENSE](LICENSE)
 
 ## 📌 重要说明
 
-**v1.0.0 和 v1.1.0 release body 中包含的链接（如 HANDOFF.md、scripts/、agents/、docs/superpowers/）在最新仓库中已不存在**——这些链接对应的是早期版本（含个人信息的版本），已通过 `git filter-branch` 从 git 历史中彻底清除。
-
 **当前仓库内容（master 分支）**仅包含：
 - 源代码（`src/main/java/com/burpmcpbridge/`）
 - 构建文件（`build.gradle.kts` / `gradlew*`）
@@ -175,7 +173,7 @@ MIT — 详见 [LICENSE](LICENSE)
 **未来使用建议**：
 - 参考 v1.1.1+ release 的 jar（33.9MB，sha256: `a461b8f78dce5fb08a95e0b4399a61af87770753819dcb7f4a9340576f0e6dcd`）
 - 启动 Burp → Extender → Add → 选 jar → Output 应显示 "Registered 32 tools"
-- 配合你的 IDE + MCP 客户端使用（如 ZCode / Trae）
+- 配合你的 IDE + MCP 客户端使用（如 ZCode / Trae / Claude / Codex）
 
 ---
 
