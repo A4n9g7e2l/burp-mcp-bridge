@@ -29,3 +29,46 @@ bin/main/
 # Python
 __pycache__/
 *.pyc
+
+# 用户隐私保护
+**/.zcode/
+**/AppData/**
+**/TRAE SOLO CN/**
+**/BurpSuite_Pro_*/
+**/sqlmap-dev/
+**/.m2/repository/
+**/burp-mcp-bridge*.bak
+.claude/
+*.bak-*
+*~
+.DS_Store
+Thumbs.db
+
+# 个人配置 / 凭证
+**/config.json
+**/config.yaml
+**/.env
+**/.env.*
+**/api_key*
+**/credentials*
+**/secrets*
+**/token*
+
+# 编辑器 / IDE
+.idea/
+.vscode/
+*.iml
+*.swp
+*.swo
+
+# Python 缓存
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# OS
+.DS_Store
+Thumbs.db
