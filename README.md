@@ -51,7 +51,7 @@
 "mcpBridge": {
   "enabled": true,
   "type": "stdio",
-  "command": "C:\\Users\\Zhouxin\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "command": "C:\\Users\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
   "args": ["D:\\claude code\\burp-mcp-bridge\\scripts\\mcp-bridge-stdio.py"]
 }
 ```
@@ -74,7 +74,7 @@ Phase 3 的 4 个工具需要外部二进制。**这些依赖是可选的** —�
 
 **完整启动命令示例**（含 Phase 3 路径）：
 ```powershell
-java "-Dmcpbridge.sqlmap.path=C:/Users/Zhouxin/AppData/Local/sqlmap/sqlmapproject-sqlmap-bb54601/sqlmap.py" `
+java "-Dmcpbridge.sqlmap.path=C:/Users/AppData/Local/sqlmap/sqlmapproject-sqlmap-bb54601/sqlmap.py" `
      "-Dmcpbridge.xpoc.path=D:/桌面/安全/xpoc_windows_amd64.exe" `
      -jar "D:\BurpSuite_Pro_V2026.6\burpsuite_pro.jar"
 ```
